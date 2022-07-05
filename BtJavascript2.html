@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="font-family: monospace; font-size: 14px">
+    <!-- bai11----------------------------------------------- -->
+    <div id="bai11">
+      <p style="color: red">
+        Bài 11: Viết chương trình nhập vào 3 số a, b, c. Kiểm tra xem a, b, c có
+        phải là 3 cạnh của tam giác không? Biết rằng, để ba số là cạnh của tam
+        giác, thì tổng hai cạnh bất kỳ luôn lớn hơn cạnh còn lại. Nếu là 3 cạnh
+        của tam giác thì tính diện tích của tam giác theo công thức: S = Căn bậc
+        hai của (p(p - a)(p - b)(p - c)) Với p là nửa chu vi tam giác, theo công
+        thức p = (a + b + c) / 2 Nếu không phải là cạnh của tam giác, in ra chữ
+        “No”
+      </p>
+      <div>
+        <div>
+          <i>Nhập cạnh thứ nhất: </i>
+          <input type="number" name="num1" id="num1" />
+        </div>
+        <div>
+          <i>Nhập cạnh thứ hai: </i>
+          <input type="number" name="num2" id="num2" />
+        </div>
+        <div>
+          <i>Nhập cạnh thứ ba: </i>
+          <input type="number" name="num3" id="num3" />
+        </div>
+        <button onclick="checkTriangle()">Calculate</button>
+        <p id="area"></p>
+      </div>
+
+      <!-- Bai 12------------------------------------------------------ -->
+      <div id="bai12">
+        <p style="color: red">
+          Bài 12: Hãy nhập vào một số là 1 tháng trong năm, in ra xem tháng đó
+          có bao nhiêu ngày. Coi như tháng 2 luôn có 28 ngày. Nếu không tìm thấy
+          tháng hợp lệ thì in ra “NOT FOUND”
+        </p>
+        <div>
+          <i>Nhập tháng</i>
+          <input type="number" name="month" id="month" />
+        </div>
+        <button onclick="checkMonth()">Check</button>
+        <p id="days"></p>
+      </div>
+
+      <!-- Bai 13------------------------------------------------------ -->
+      <div id="bai13">
+        <p style="color: red">
+          Bài 13: Viết chương trình để tính cước điện thoại bàn cho một hộ gia
+          đình với các thông số như sau: - Phí thuê bao bắt buộc là 25 nghìn. -
+          600 đồng cho mỗi gọi của 50 phút đầu tiên. - 400 đồng cho mỗi phút gọi
+          của 150 phút tiếp theo.
+        </p>
+        <div>
+          <i>Nhập số phút</i>
+          <input type="number" name="min" id="min" />
+        </div>
+        <button onclick="calFee()">Calculate</button>
+        <p id="fee"></p>
+      </div>
+
+      <!-- Bai 14------------------------------------------------------ -->
+      <div id="bai14">
+        <p style="color: red">
+          Bài 14: Nhập vào mảng gồm n số nguyên. Tính trung bình cộng của mảng.
+        </p>
+        <div>
+          <i>Nhập n phần tử (ngăn cách bởi dấu ',')</i>
+          <input type="text" name="numArr" id="numArr" />
+        </div>
+        <button onclick="calAverage()">Calculate</button>
+        <p id="avg"></p>
+      </div>
+
+      <!-- Bai 15------------------------------------------------------ -->
+      <div id="bai15">
+        <p style="color: red">
+          Bài 15: Cho một mảng n số nguyên. Tính trung bình các số nguyên tố
+          trong mảng. Nếu dãy không có số nguyên tố, in ra “NOT FOUND”.
+        </p>
+        <div>
+          <i>Nhập n phần tử (ngăn cách bởi dấu ',')</i>
+          <input type="text" name="numArr15" id="numArr15" />
+        </div>
+        <button onclick="calPrimeAvg()">Calculate</button>
+        <p id="primeAvg"></p>
+      </div>
+
+      <!-- Bai 16------------------------------------------------------ -->
+      <div id="bai16">
+        <p style="color: red">
+          Bài 16: Cho một mảng n số nguyên. Tìm và in ra các số chính phương
+          trong mảng. Nếu dãy không có số phù hợp, in ra “NOT FOUND”
+        </p>
+        <div>
+          <i>Nhập n phần tử (ngăn cách bởi dấu ',')</i>
+          <input type="text" name="numArr16" id="numArr16" />
+        </div>
+        <button onclick="printSquare()">Calculate</button>
+        <p id="square"></p>
+      </div>
+
+      <!-- Bai 17------------------------------------------------------ -->
+      <div id="bai17">
+        <p style="color: red">
+          Bài 17: Cho một mảng n số nguyên. Tìm và in ra số âm lớn nhất trong
+          mảng. Nếu dãy không có số phù hợp, in ra “NOT FOUND”.
+        </p>
+        <div>
+          <i>Nhập n phần tử (ngăn cách bởi dấu ',')</i>
+          <input type="text" name="numArr17" id="numArr17" />
+        </div>
+        <button onclick="maxNegative()">Calculate</button>
+        <p id="maxNegative"></p>
+      </div>
+
+      <!-- Bai 18------------------------------------------------------ -->
+      <div id="bai18">
+        <p style="color: red">
+          Bài 18: Cho một mảng n số nguyên. Sắp xếp các dãy số trong mảng theo
+          chiều tăng dần.
+        </p>
+        <div>
+          <i>Nhập n phần tử (ngăn cách bởi dấu ',')</i>
+          <input type="text" name="numArr18" id="numArr18" />
+        </div>
+        <button onclick="ascSort()">Sort</button>
+        <p id="ascSort"></p>
+      </div>
+
+      <!-- Bai 19------------------------------------------------------- -->
+      <div id="bai19">
+        <p style="color: red">
+          Bài 19: Hãy nhập vào một đoạn văn, đếm xem trong đoạn văn đó có bao
+          nhiêu từ.
+        </p>
+        <div>
+          <i>Nhập đoạn văn</i>
+          <textarea type="text" name="para" id="para"></textarea>
+        </div>
+        <button onclick="countWords()">Count words</button>
+        <p id="count"></p>
+      </div>
+
+      <!-- Bai 20-------------------------------------------------- -->
+
+      <div id="bai20">
+        <p style="color: red">
+          Bài 20: Viết chương trình nhập vào hai số nguyên a, b và tính tổng hai
+          số đó.
+        </p>
+        <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+          <input type="number" id="a" />
+          +<input type="number" id="b" /> =<output name="x" for="a+b"></output>
+        </form>
+      </div>
+
+      <!-- bai 21--------------- -->
+      <div id="bai21">
+        <p style="color: red">Bài 21: Tính tổng các số từ 1 tới n</p>
+        <input type="number" id="n" />
+        <button onclick="calSum()">Sum</button>
+        <p id="sum"></p>
+      </div>
+
+      <!-- bai 22--------------- -->
+      <div id="bai22">
+        <p style="color: red">
+          Bài 22: Nhập vào một chuỗi. Kiểm tra xem chuỗi đó có chứa tất cả là số
+          hay không.
+        </p>
+        <input type="text" id="string" />
+        <button onclick="checkString()">Check</button>
+        <p id="result"></p>
+      </div>
+
+      <!-- bai 23--------------- -->
+      <div id="bai23">
+        <p style="color: red">
+          Bài 23: thết kế đồng hồ bấm giờ gồm 3 button: start( bắt đầu chạy thời
+          gian) stop(dừng lại và hiển thị thời gian chạy được) reset(quay trở về
+          thời gian ban đầu)
+        </p>
+        <p class="clock" style="font-size: 36px; margin-left: 28px">
+          <span id="hour">0</span>:<span id="minute">0</span>:<span id="second"
+            >0</span
+          >
+        </p>
+        <div style="display: flex">
+          <button style="margin: 12px" onclick="start()">Start</button>
+          <button style="margin: 12px" onclick="stop()">Stop</button>
+          <button style="margin: 12px" onclick="reset()">Reset</button>
+        </div>
+      </div>
+
+      <!-- bai 24--------------------------------------------------- -->
+      <div id="bai24">
+        <p style="color: red">
+          Bài 24: Viết chương trình cho người dùng nhập vào số n lớn hơn 0, sau
+          đó dựa vào n tính giá trị của biểu thức: expres = 1/n + 2/n + 3/n +
+          ... + n/n.
+        </p>
+        <input type="number" id="inputn" />
+        <button onclick="calEx()">Calculate</button>
+        <p id="ex"></p>
+      </div>
+
+      <!-- bai 25------------------------------------------------ -->
+      <div id="bai25">
+        <p style="color: red">Bài 25:Tính giai thừa một số bất kỳ.</p>
+        <input type="number" id="num4" />
+        <button onclick="cal()">Calculate</button>
+        <p id="res25"></p>
+      </div>
+      <!-- bai 26------------------------------------------------ -->
+      <div id="bai26">
+        <p style="color: red">
+          Bài 26: Tính số n của dãy fibonaci f(n) = f(n-1) + f(n-2) Với điều
+          kiện : n > 2 và f(1) = 1, f(2) = 1
+        </p>
+        <input type="number" id="num5" />
+        <button onclick="calFibo()">Calculate</button>
+        <p id="res26"></p>
+      </div>
+
+      <!-- bai 27--------------------------------------------------- -->
+      <div id="bai27">
+        <p style="color: red">
+          Bài 27: Xây dựng danh sách công việc cần làm trong ngày ( yêu cầu:
+          người dùng có thể thêm, xoá công việc)
+        </p>
+        <input type="text" name="task" id="task" />
+        <button onclick="addTask()">add</button>
+      </div>
+
+      <!-- Bai 28-------------------------------------------------- -->
+      <div id="bai28">
+        <p style="color: red">
+          Bài 28: Nhập vào một chuỗi. Đổi tất cả các chữ cái đầu câu thành hoa,
+          các chữ khác thành chữ thường theo đúng chính tả. Chuỗi không chứa
+          danh từ riêng, không chứa các dấu cách thừa. Các dấu câu có thể có gồm
+          chấm (.), hỏi chấm (?), chấm than (!).
+        </p>
+        <textarea type="text" id="string28"></textarea>
+        <p id="output"></p>
+        <button onclick="convert()">Edit</button>
+      </div>
+
+      <!-- Bai 29-------------------------------------------------- -->
+      <div id="bai29">
+        <p style="color: red">
+          Bài 29: Nhập vào một chuỗi và một ký tự. Đếm số lần xuất hiện của ký
+          tự đó trong chuỗi đã cho và không phân biệt chữ hoa chữ thường.
+        </p>
+        <textarea type="text" id="string29"></textarea>
+        <p id="countChar"></p>
+        <button onclick="countChar()">Count char</button>
+      </div>
+
+      <!-- Bai30------------------------------------------------- -->
+      <div id="bai30">
+        <p>
+          Bai 30:tự thiết kế validation cho chức năng đăng ký đăng nhập: yêu cầu
+          check trường email theo chuẩn email, check password theo yêu cầu >5 ký
+          tự , ko đc có ký tự không cho phép như ( _ , - , / , ...)
+        </p>
+        <input type="email" name="email" id="email" />
+        <input type="password" name="password" id="password" />
+        <button onclick="checkValid()">Dang ky</button>
+      </div>
+
+      <!-- JavaScript----------------------------------------------- -->
+
+      <script>
+        //   bai11---------------------------------
+        function checkTriangle() {
+          const num1 = parseFloat(document.getElementById("num1").value);
+          const num2 = parseFloat(document.getElementById("num2").value);
+          const num3 = parseFloat(document.getElementById("num3").value);
+          // console.log(num1,num2,num3);
+          const p = document.getElementById("area");
+          if (num1 + num2 < num3 || num2 + num3 < num1 || num3 + num1 < num2) {
+            p.innerHTML = "Không là 3 cạnh của tam giác";
+          } else
+            p.innerHTML = "diện tích tam giác: " + calArea(num1, num2, num3);
+        }
+        function calArea(a, b, c) {
+          const p = (a + b + c) / 2;
+          return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        }
+
+        //  bai 12-----------------------
+        function checkMonth() {
+          const month = parseInt(document.getElementById("month").value);
+          const p = document.getElementById("days");
+          switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+              p.innerHTML = "Tháng " + month + " có 31 ngày";
+              break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+              p.innerHTML = "Tháng " + month + " có 30 ngày";
+              break;
+            case 2:
+              p.innerHTML = "Tháng " + month + " có 28 ngày";
+              break;
+            default:
+              p.innerHTML = "NOT FOUND";
+          }
+        }
+
+        //  bai13------------------------------------------------
+        function calFee() {
+          const min = parseInt(document.getElementById("min").value);
+          const p = document.getElementById("fee");
+          var fee;
+          if (min <= 50) {
+            fee = 600 * min + 25000;
+          } else {
+            fee = 600 * 50 + 400 * (min - 50) + 25000;
+          }
+          p.innerHTML = "Phí dịch vụ: " + fee + "VND";
+        }
+
+        //  bai14------------------------------------------------
+        function calAverage() {
+          const arrStr = document.getElementById("numArr").value.split(",");
+          let sum = 0;
+          arrStr.forEach((num) => (sum += parseFloat(num)));
+          const avg = sum / arrStr.length;
+          const p = document.getElementById("avg");
+          p.innerText = `Trung bình cộng: ${avg}`;
+        }
+
+        //  bai15------------------------------------------------
+        function calPrimeAvg() {
+          function isPrime(num) {
+            if (num <= 1) {
+              return false;
+            }
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+              if (num % i == 0) {
+                return false;
+              }
+            }
+            return true;
+          }
+
+          const arrStr = document.getElementById("numArr15").value.split(",");
+          let sum = 0,
+            count = 0;
+          arrStr.forEach((num) => {
+            const intNum = parseInt(num);
+            if (isPrime(intNum)) {
+              count++;
+              sum += intNum;
+            }
+          });
+          const p = document.getElementById("primeAvg");
+          if (count === 0) {
+            p.innerText = "NOT FOUND";
+          } else {
+            const avg = sum / count;
+            p.innerText = `Trung bình cộng các số nguyên tố: ${avg}`;
+          }
+        }
+
+        //  bai16------------------------------------------------
+        function printSquare() {
+          const arrStr = document.getElementById("numArr16").value.split(",");
+          let squareNum = [];
+          arrStr.forEach((num) => {
+            const intNum = parseInt(num);
+            const sqrtNum = Math.sqrt(intNum);
+            if (!sqrtNum.toString().includes(".")) {
+              console.log(intNum);
+              squareNum.push(intNum);
+            }
+          });
+          const p = document.getElementById("square");
+          if (squareNum.length > 0) {
+            p.innerText = `Cac so chinh phuong: ${squareNum.join(" ")}`;
+          } else {
+            p.innerText = "NOT FOUND";
+          }
+        }
+
+        //  bai17------------------------------------------------
+        function maxNegative() {
+          const arrStr = document.getElementById("numArr17").value.split(",");
+          let sum = 0;
+          const negativeNum = arrStr.filter((num) => parseInt(num) < 0);
+          const p = document.getElementById("maxNegative");
+          if (negativeNum.length === 0) {
+            p.innerText = "NOT FOUND";
+          } else {
+            p.innerText = Math.max(...negativeNum);
+          }
+        }
+
+        //  bai18------------------------------------------------
+        function ascSort() {
+          const arrStr = document.getElementById("numArr18").value.split(",");
+          let sum = 0;
+          const negativeNum = arrStr.filter((num) => parseInt(num) < 0);
+          const p = document.getElementById("maxNegative");
+          if (negativeNum.length === 0) {
+            p.innerText = "NOT FOUND";
+          } else {
+            p.innerText = Math.max(...negativeNum);
+          }
+        }
+        // bai 19------------------------------------------------------
+
+        function countWords() {
+          const para = document.getElementById("para").value.split(" ");
+          const p = document.getElementById("count");
+          p.innerText = "Số từ: " + para.length;
+        }
+
+        // bai 21 -------------------------------------------------------
+        function calSum() {
+          const n = parseInt(document.getElementById("n").value);
+          let sum = (n * (n + 1)) / 2;
+          const p = document.getElementById("sum");
+          p.innerText = sum;
+        }
+
+        // bai 22 --------------------------------------------------
+        function checkString() {
+          const string = document.getElementById("string").value;
+          const p = document.getElementById("result");
+          console.log(string);
+          console.log(isNaN(string));
+
+          if (isNaN(string)) p.innerText = "chứa kí tự";
+          else p.innerText = "Không chứa kí tự";
+        }
+
+        // bai23--------------------------------------------------------
+
+        let hour = parseInt(document.getElementById("hour").innerText);
+        let minute = parseInt(document.getElementById("minute").innerText);
+        let second = parseInt(document.getElementById("second").innerText);
+        console.log(second);
+        let s = false;
+        var x;
+        function start() {
+          if (s == false) {
+            s = true;
+            x = setInterval(function () {
+              if (second < 59) second++;
+              else {
+                second = 0;
+                if (minute < 59) minute++;
+                else {
+                  hour++;
+                  minute = 0;
+                }
+              }
+              console.log(second);
+              document.getElementById("hour").innerText = hour;
+              document.getElementById("minute").innerText = minute;
+
+              document.getElementById("second").innerText = second;
+            }, 1000);
+          }
+        }
+        function stop() {
+          s = false;
+          clearInterval(x);
+        }
+        function reset() {
+          hour = 0;
+          minute = 0;
+          second = 0;
+          document.getElementById("hour").innerText = 0;
+          document.getElementById("minute").innerText = 0;
+          document.getElementById("second").innerText = 0;
+          stop();
+        }
+
+        // Bai24------------------------------------
+        function calEx() {
+          const n = parseInt(document.getElementById("inputn").value);
+          const p = document.getElementById("ex");
+          let sum = 0;
+          for (let i = 0; i < n; i++) {
+            sum = sum + i / n;
+          }
+          p.innerText = sum;
+        }
+        // Bai 25-----------------------------------------
+        function cal() {
+          const n = parseInt(document.getElementById("num4").value);
+          const p = document.getElementById("res25");
+          let res = 1;
+          for (let i = 1; i <= n; i++) {
+            res = res * i;
+          }
+          p.innerText = n + "!= " + res;
+        }
+
+        // Bai 26---------------------------------------
+        function calFibo() {
+          const n = parseInt(document.getElementById("num5").value);
+          const p = document.getElementById("res26");
+          let res = f(n);
+          p.innerText = "số fibonaci thứ " + n + ": " + res;
+        }
+        function f(n) {
+          if (n == 1 || n == 2) return 1;
+          else return f(n - 1) + f(n - 2);
+        }
+
+        //Bai 27--------------------------------------------------
+        function addTask() {
+          const input = document.getElementById("task").value;
+          const div = document.createElement("div");
+          const button = document.createElement("button");
+          const p = document.createElement("p");
+          button.innerText = "Delete";
+          console.log(input);
+          p.innerText = input;
+
+          div.style = "display:flex";
+          div.appendChild(p);
+          div.appendChild(button);
+          document.getElementById("bai27").appendChild(div);
+          button.addEventListener("click", () => {
+            div.remove();
+          });
+        }
+
+        //Bai 28---------------------------------------
+        function convert() {
+          const input = document.getElementById("string28").value.split("");
+          //const input = ["q", ".", " ", "w"];
+
+          var output = input;
+          output[0] = input[0].toUpperCase();
+          //console.log(output);
+          for (let i = input.length - 1; i > 1; i--) {
+            if (input[i] == "." || input[i] == "?" || input[i] == "!") {
+              output[i + 2] = input[i + 2].toUpperCase();
+            } else {
+              //console.log(input[i]);
+              output[i] = input[i].toLowerCase();
+            }
+          }
+          document.getElementById("output").innerHTML = output.join("");
+        }
+
+        // Bai 29------------------------------------------
+        function countChar() {
+          const input = document.getElementById("string29").value.split("");
+          for (let i = 0; i < n; i++) {
+            if (input[i] == "." || input[i] == "?" || input[i] == "!") {
+              output[i + 2] = input[i + 2].toUpperCase();
+            } else {
+              //console.log(input[i]);
+              output[i] = input[i].toLowerCase();
+            }
+          }
+        }
+
+        //Bai 30---------------------------------------------------------------------
+        function checkValid(email, password) {
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+          checkEmail(email);
+          checkPassword(password);
+        }
+        function checkPassword(pass) {
+          if (
+            pass.length < 5 ||
+            pass.includes("-") ||
+            pass.includes("_") ||
+            pass.includes("/") ||
+            pass.includes("|")
+          ) {
+            const label = document.createElement("div");
+            label.innerText = "mat khau khong hop le";
+            document.getElementById("bai1").appendChild(label);
+            setTimeout(() => {
+              label.remove();
+            }, 2111);
+          }
+        }
+        function checkEmail(email) {
+          if (!email.includes("@") || !email.includes(".")) {
+            const label = document.createElement("div");
+            label.innerText = "email khong hop le";
+            document.getElementById("bai30").appendChild(label);
+            setTimeout(() => {
+              label.remove();
+            }, 2111);
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

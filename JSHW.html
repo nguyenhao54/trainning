@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Bài 1 ------------------------------------------------->
+    <div id="bai1">
+      <p>
+        Bai 1:tự thiết kế validation cho chức năng đăng ký đăng nhập: yêu cầu
+        check trường email theo chuẩn email, check password theo yêu cầu >5 ký
+        tự , ko đc có ký tự không cho phép như ( _ , - , / , ...)
+      </p>
+      <input type="email" name="email" id="email" />
+      <input type="password" name="password" id="password" />
+      <button onclick="checkValid()">send</button>
+    </div>
+  </body>
+  <!-- Bài 2 ------------------------------------------------->
+  <div id="bai2">
+    <p>
+      bài tập2: thết kế đồng hồ bấm giờ gồm 3 button: start( bắt đầu chạy thời
+      gian) stop(dừng lại và hiển thị thời gian chạy được) reset(quay trở về
+      thời gian ban đầu)
+    </p>
+  </div>
+
+  <!-- JavaScript----------------------------------------------->
+  <script>
+    //    Bài 1-------------------------------------------------
+    function checkValid(email, password) {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      checkEmail(email);
+      checkPassword(password);
+    }
+    function checkPassword(pass) {
+      if (
+        pass.length < 5 ||
+        pass.includes("-") ||
+        pass.includes("_") ||
+        pass.includes("/") ||
+        pass.includes("|")
+      ) {
+        const label = document.createElement("div");
+        label.innerText = "mat khau khong hop le";
+        document.getElementById("bai1").appendChild(label);
+        setTimeout(() => {
+          label.remove();
+        }, 3111);
+      }
+    }
+    function checkEmail(email) {
+      if (!email.includes("@") || !email.includes(".")) {
+        const label = document.createElement("div");
+        label.innerText = "email khong hop le";
+        document.getElementById("bai1").appendChild(label);
+        setTimeout(() => {
+          label.remove();
+        }, 3111);
+      }
+    }
+  </script>
+</html>

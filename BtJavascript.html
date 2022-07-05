@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="font-family: monospace; font-size: 14px">
+    <!-- bai1--------------- -->
+    <div id="bai1">
+      <p style="color: red">
+        Bài 1: Chuyển đổi giờ sang giây <br />
+        Nhấn enter để chuyển đổi
+      </p>
+      <i>Nhập giờ: </i>
+      <input
+        type="number"
+        name="hour"
+        id="hour"
+        onkeypress=" return convert(event)"
+      />
+      <p id="second">Giây:</p>
+    </div>
+
+    <!-- bai2--------------------- -->
+    <div id="bai2">
+      <p style="color: red">
+        Bài 2: So sánh ba số tự nhiên xem số nào là số lớn nhất
+      </p>
+      <div>
+        <i>Nhập số thứ nhất: </i>
+        <input type="number" name="num1" id="num1" />
+      </div>
+      <div>
+        <i>Nhập số thứ hai: </i>
+        <input type="number" name="num2" id="num2" />
+      </div>
+      <div>
+        <i>Nhập số thứ ba: </i>
+        <input type="number" name="num3" id="num3" />
+      </div>
+      <button onclick="compare()">check</button>
+      <p id="max-num">Số lớn nhất:</p>
+    </div>
+
+    <!-- bai3----------------------------------- -->
+    <div id="bai3">
+      <p style="color: red">
+        Bài 3: Tìm số tự nhiên chẵn lớn nhất trong dãy số cho trước
+      </p>
+      <i>Nhập dãy số, phân cách nhau bởi dấu phẩy </i>
+      <input type="text" name="array" id="array" />
+      <button onclick="findMaxEven()">check</button>
+      <p id="max-even">Số tự nhiên chẵn lớn nhất:</p>
+    </div>
+
+    <!-- bai4--------------------------------------- -->
+    <div id="bai4">
+      <p style="color: red">Bài 4: Giải phương trình bậc nhất ax + b = 0</p>
+      <div>
+        <input type="number" style="width: 25px" name="a" id="a" />
+        <i>x+</i>
+        <input type="number" style="width: 25px" name="b" id="b" />
+        <i>=0</i>
+        <button onclick="solve()">Solve</button>
+        <p id="x">x=</p>
+      </div>
+    </div>
+
+    <!-- bai5------------------------------------------- -->
+    <div id="bai5">
+      <p style="color: red">
+        Bài 5: Giải phương trình bậc nhất ax^2 + bx + c = 0
+      </p>
+      <div>
+        <input type="number" style="width: 25px" name="a2" id="a2" />
+        <i>x^2+</i>
+        <input type="number" style="width: 25px" name="b2" id="b2" />
+        <i>x + </i>
+        <input type="number" style="width: 25px" name="c2" id="c2" />
+        <i>=0</i>
+        <button onclick="solve2()">Solve</button>
+        <p id="x2">x=</p>
+      </div>
+    </div>
+    <!-- bai6-------------------------------------------- -->
+    <div id="bai6">
+      <p style="color: red">
+        Bài 6: Đăng kí tài khoản gồm Phone theo đúng định dạng gồm 10 số, và
+        password
+      </p>
+      <div>
+        <input
+          type="phone"
+          name="phone"
+          id="phone"
+          placeholder="Enter Phone Number"
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter Password"
+        />
+        <button onclick="checkRegist()">send</button>
+      </div>
+    </div>
+    <!-- bai7----------------------------------------------- -->
+    <div id="bai7">
+      <p style="color: red">Bài 7: Kiểm tra số nguyên tố</p>
+      <div>
+        <input
+          type="number"
+          name="prime"
+          id="prime"
+          onkeypress="return checkPrime(event)"
+        />
+      </div>
+    </div>
+
+    <!-- bai8------------------------------------------------- -->
+    <p style="color: red">
+      Bài 8: Nhập tên và tuổi ( tuổi phải là số) rồi in ra màn hình
+    </p>
+    <div id="bai8">
+      <i>Tên: </i>
+      <input type="text" id="name" />
+      <i>Tuổi: </i>
+      <input type="number" name="age" id="age" />
+      <button onclick="print()">Print</button>
+    </div>
+    <!-- Bài 9 ------------------------------------------------->
+    <div id="bai9">
+      <p style="color: red">
+        Bài 9: Đăng nhập gồm tên đăng nhập và password, khi bấm nút đăng nhập sẽ
+        mở sang một khác
+      </p>
+      <input type="email" name="email" id="em" placeholder="Enter Email" />
+      <input
+        type="password"
+        name="pass"
+        id="pass"
+        placeholder="Enter Password"
+      />
+      <button onclick="checkValid()">Login</button>
+    </div>
+
+    <!-- Bai10------------------------------------------------- -->
+    <p style="color: red">
+      Bài 10: Nhập tên và năm sinh , rồi tính tuổi của người đó. Năm sinh phải
+      nhỏ hơn hoặc hiện tại
+    </p>
+    <div id="bai10">
+      <i>Năm sinh: </i>
+      <input type="number" id="year" />
+      <button onclick="calAge()">Calculate</button>
+      <p id="ageCal">Tuổi:</p>
+    </div>
+
+    <!-- JavaScript----------------------------------------------- -->
+    <!-- ------------------------------------------------- -->
+
+    <script>
+      // bai1-------------------------
+      function convert(event) {
+        if (event.keyCode == 13) {
+          const input = document.getElementById("hour").value;
+          var p = document.getElementById("second");
+          p.innerHTML = "Giây: " + parseInt(input) * 60;
+        }
+      }
+
+      //bai2------------------------
+      function compare() {
+        const num1 = document.getElementById("num1").value;
+        const num2 = document.getElementById("num2").value;
+        const num3 = document.getElementById("num3").value;
+        let max = num1;
+        if (num2 > max) {
+          max = num2;
+        }
+        if (num3 > max) {
+          max = num3;
+        }
+        var p = document.getElementById("max-num");
+        p.innerHTML = "Số lớn nhất: " + max;
+      }
+
+      // bai3----------------------
+      function findMaxEven() {
+        const arrstr = document.getElementById("array").value;
+        const arr = arrstr.split(",");
+        let max = arr[0];
+        for (let index = 0; index < arr.length; index++) {
+          if (isEven(arr[index]) && max < arr[index]) {
+            max = arr[index];
+          }
+        }
+        const p = document.getElementById("max-even");
+        p.innerHTML = "Số tự nhiên chẵn lớn nhất" + max;
+      }
+      function isEven(a) {
+        if (a % 2 == 1) return false;
+        return true;
+      }
+
+      // bài 4-------------------------------------------
+      function solve() {
+        const a = document.getElementById("a").value;
+        const b = document.getElementById("b").value;
+        var x = -b / a;
+        p = document.getElementById("x");
+        p.innerHTML = "x= " + x;
+      }
+
+      // bài 5--------------------------------------------
+      function solve2() {
+        const a2 = document.getElementById("a2").value;
+        const b2 = document.getElementById("b2").value;
+        const c2 = document.getElementById("c2").value;
+        const delta = b2 * b2 - 4 * a2 * c2;
+        console.log(delta);
+        p = document.getElementById("x2");
+
+        if (delta < 0) {
+          p.innerHTML = "Phương trình vô nghiệm";
+        } else if (delta === 0) {
+          p.innerHTML = "x= " + -(b2 / 2) * a2;
+        } else {
+          p.innerHTML =
+            "x= " +
+            ((-b2 + Math.sqrt(delta)) / 2) * a2 +
+            "," +
+            (-b2 - Math.sqrt(delta)) / 2;
+        }
+      }
+
+      // bài 6----------------------------------------------
+      function checkRegist() {
+        var phone = document.getElementById("phone").value;
+        var password = document.getElementById("password").value;
+        checkPhone(phone);
+        checkPassword(password);
+      }
+      function checkPassword(pass) {
+        if (
+          pass.length < 5 ||
+          pass.includes("-") ||
+          pass.includes("_") ||
+          pass.includes("/") ||
+          pass.includes("|")
+        ) {
+          const label = document.createElement("div");
+          label.innerText = "mat khau khong hop le";
+          document.getElementById("bai6").appendChild(label);
+          setTimeout(() => {
+            label.remove();
+          }, 3111);
+        }
+      }
+      function checkPhone(phone) {
+        if (phone.length != 10) {
+          const label = document.createElement("div");
+          label.innerText = "so dien thoai khong hop le";
+          document.getElementById("bai6").appendChild(label);
+          setTimeout(() => {
+            label.remove();
+          }, 3111);
+        }
+      }
+
+      // bai7--------------------------------------------------
+      function checkPrime(event) {
+        if (event.keyCode == 13) {
+          const input = document.getElementById("prime").value;
+          const prime = parseInt(input);
+          const label = document.createElement("div");
+          console.log(input);
+          if (isPrime(prime)) {
+            label.innerText = "Là số nguyên tố";
+          } else label.innerText = "Không là số nguyên tố";
+          document.getElementById("bai7").appendChild(label);
+          setTimeout(() => {
+            label.remove();
+          }, 3111);
+        }
+      }
+      function isPrime(num) {
+        if (num <= 1) {
+          return false;
+        }
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i == 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Bai8------------------------
+      function print() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const label = document.createElement("div");
+        label.innerHTML = name + " " + age;
+        document.getElementById("bai8").appendChild(label);
+        setTimeout(() => {
+          label.remove();
+        }, 8111);
+      }
+      //    Bài 9-------------------------------------------------
+      function checkValid() {
+        var email = document.getElementById("em").value;
+        var password = document.getElementById("pass").value;
+        if (checkEmail(email) && checkPassword(password)) {
+          var myWindow = window.open("", "_self");
+          myWindow.document.write("<p>Dang nhap thanh cong</p>");
+        }
+      }
+      function checkPassword(pass) {
+        if (
+          pass.length < 5 ||
+          pass.includes("-") ||
+          pass.includes("_") ||
+          pass.includes("/") ||
+          pass.includes("|")
+        ) {
+          const label = document.createElement("div");
+          label.innerText = " email hoac mat khau khong hop le";
+          document.getElementById("bai9").appendChild(label);
+          setTimeout(() => {
+            label.remove();
+          }, 3111);
+          return false;
+        }
+        return true;
+      }
+      function checkEmail(email) {
+        if (!email.includes("@") || !email.includes(".")) {
+          const label = document.createElement("div");
+          label.innerText = "email hoac mat khau khong hop le";
+          document.getElementById("bai9").appendChild(label);
+          setTimeout(() => {
+            label.remove();
+          }, 3111);
+          return false;
+        }
+        return true;
+      }
+
+      // BAi10----------------------------------------------
+      function calAge() {
+        const year = parseInt(document.getElementById("year").value);
+        const p = document.getElementById("ageCal");
+        const curYear = new Date().getFullYear();
+        const age = curYear - year;
+        if (age < 0) p.innerHTML = "Năm sinh không hợp lệ";
+        else p.innerHTML = "Tuổi: " + age;
+      }
+    </script>
+  </body>
+</html>
