@@ -259,7 +259,8 @@
           Bài 29: Nhập vào một chuỗi và một ký tự. Đếm số lần xuất hiện của ký
           tự đó trong chuỗi đã cho và không phân biệt chữ hoa chữ thường.
         </p>
-        <textarea type="text" id="string29"></textarea>
+        <i>Nhập chuỗi</i> <textarea type="text" id="string29"></textarea>
+        <i>Nhập kí tự</i> <input type="text" name="" id="char29" />
         <p id="countChar"></p>
         <button onclick="countChar()">Count char</button>
       </div>
@@ -569,14 +570,16 @@
         // Bai 29------------------------------------------
         function countChar() {
           const input = document.getElementById("string29").value.split("");
-          for (let i = 0; i < n; i++) {
-            if (input[i] == "." || input[i] == "?" || input[i] == "!") {
-              output[i + 2] = input[i + 2].toUpperCase();
-            } else {
-              //console.log(input[i]);
-              output[i] = input[i].toLowerCase();
+          const char = document.getElementById("char29").value;
+          console.log(input, char);
+          var res = document.getElementById("countChar");
+          let count = 0;
+          for (let i = 0; i < input.length; i++) {
+            if (input[i] == char) {
+              count++;
             }
           }
+          res.innerText = "Số lần kí tự " + char + " xuất hiện: " + count;
         }
 
         //Bai 30---------------------------------------------------------------------
