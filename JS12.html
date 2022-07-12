@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="bai12">
+      B12: Viết một chương trình JavaScript chấp nhận một số làm đầu vào và chèn
+      dấu gạch ngang (-) vào giữa hai số chẵn. Ví dụ: 025468, đầu ra phải là
+      0-254-6-8
+      <div>
+        <input
+          type="number"
+          name=""
+          id="number"
+          placeholder="Enter string number"
+        />
+        <button onclick="convert()">Convert</button>
+        <div id="output"></div>
+      </div>
+    </div>
+    <script>
+      function convert() {
+        const input = document.getElementById("number").value.split("");
+        const output = document.getElementById("output");
+        for (let i = 1; i < input.length; i++) {
+          if (input[i] % 2 == 0 && input[i + 1] % 2 == 0)
+            input[i] = input[i] + "-";
+        }
+        output.innerText = input.join("");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    table,
+    tr {
+      border: 1px solid grey;
+    }
+    button {
+      border: none;
+      border-radius: 25px;
+      width: 45px;
+      height: 25px;
+    }
+  </style>
+  <body>
+    <div id="bai7">
+      <p>
+        B7. Xây dựng chương trình đếm ngược sự kiện, hiển thị danh sách các sự
+        kiện kèm số ngày đếm ngược, gồm các chức năng thêm sửa xóa
+      </p>
+      <div>
+        <input type="text" name="" id="event" placeholder="Enter Event name" />
+        <input type="date" name="" id="date" />
+        <button onclick="display()">ADD</button>
+      </div>
+      <table id="table">
+        <tr>
+          <th>Task</th>
+          <th>Expired day</th>
+          <th>action</th>
+        </tr>
+        <tr></tr>
+      </table>
+    </div>
+    <script>
+      let maxid = 1;
+      class Task {
+        constructor(id, taskName, dueDate) {
+          this.id = id;
+          this.taskName = taskName;
+          this.dueDate = dueDate;
+        }
+      }
+      function display() {
+        const event = document.getElementById("event").value;
+        const date = document.getElementById("date").value;
+        let newTask = new Task(maxid, event, date);
+        let time = document.createElement("td");
+        let eventlbl = document.createElement("td");
+        let tr = document.createElement("tr");
+
+        document.getElementById("table").appendChild(tr);
+
+        eventlbl.innerText = newTask.taskName;
+        countDownDate = new Date(date).getTime();
+        var x = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          time.innerHTML = ": expire after " + days + "days ";
+        }, 1);
+        tr.appendChild(eventlbl);
+        tr.appendChild(time);
+
+        const btn = document.createElement("button");
+        btn.innerText = "delete";
+        tr.appendChild(btn);
+        btn.addEventListener("click", () => {
+          tr.remove();
+        });
+        const btnedit = document.createElement("button");
+        btnedit.innerText = "edit";
+        tr.appendChild(btnedit);
+      }
+      function countdown(date, time) {}
+    </script>
+  </body>
+</html>

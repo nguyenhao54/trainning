@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    button {
+      width: 155px;
+      height: 55px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+  <body>
+    <!-- Bài 6 ------------------------------------------------->
+    <div id="bai6">
+      <p>
+        B6: Giả sử có chương trình lấy thông tin về sở thích của người dùng, mỗi
+        sở thích là một checkbox và nếu người dùng thích cái nào thì check vào
+        cái đó. Hãy tạo ra một button xử lý khi click vào button đó thì hiển thị
+        danh sách các sở thích mà người dùng đã chọn.
+      </p>
+      <div>
+        <input
+          type="checkbox"
+          name=""
+          value="Listening to music"
+          class="interest"
+        />
+        <label for="music">Nghe nhạc</label>
+        <input
+          type="checkbox"
+          name=""
+          value="Watching movie"
+          class="interest"
+        />
+        <label for="movie">Xem phim</label>
+        <input type="checkbox" name="" value="Football" class="interest" />
+        <label for="football">Đá bóng</label>
+        <input type="checkbox" name="" value="Drawing" class="interest" />
+        <label for="draw">Vẽ tranh</label>
+        <input type="checkbox" name="" value="Calligraphy" class="interest" />
+        <label for="calli">Thư pháp</label>
+      </div>
+      <div>
+        <input type="checkbox" name="" value="Traveling" class="interest" />
+        <label for="">Du lịch</label>
+        <input type="checkbox" name="" value="Shopping" class="interest" />
+        <label for="shopping">Mua sắm</label>
+        <input type="checkbox" name="" value="Sleeping" class="interest" />
+        <label for="sleeping">Ngủ</label>
+      </div>
+      <button onclick="display()">Print interest</button>
+    </div>
+  </body>
+
+  <!-- JavaScript----------------------------------------------->
+  <script>
+    function display() {
+      let interests = document.getElementsByClassName("interest");
+      const div = document.getElementById("bai6");
+      for (let i = 0; i < interests.length; i++) {
+        if (interests[i].checked == true) {
+          const label = document.createElement("div");
+          label.innerText = interests[i].value;
+          div.appendChild(label);
+        }
+      }
+    }
+  </script>
+</html>
