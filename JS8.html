@@ -9,5 +9,42 @@
   <body>
     B8 : nhập năm và nhập tháng, yêu cầu hiển thị bảng lịch của tháng đó (có
     thứ, ngày)
+
+    <p>Nhập vào Ngày tháng năm</p>
+    <input type="date" id="inputDate" />
+    <button onclick="displayTable()">Display</button>
+    <table id="table"></table>
   </body>
+  <script>
+    function displayTable() {
+      const date = document.getElementById("inputDate").value;
+      var myDate = new Date(date);
+      var str;
+      str += "<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td>";
+      str += "<td>Thu</td><td>Fri</td><td>Sat</td></tr>";
+      console.log(myDate);
+
+      newDate = new Date(myDate.getFullYear(), myDate.getMonth(), 1);
+      var firstDay = newDate.getDay(); // what day of week?
+      console.log(firstDay);
+      newDate.setMonth(myDate.getMonth() + 1, 0);
+      var lastDay = newDate.getDate(); // last date of current month
+      var d = 1;
+
+      for (let i = 0; i <= 42; i++) {
+        if (i % 7 == 0) {
+          str = str + "</tr><tr>";
+        }
+        if (i >= firstDay && d <= lastDay) {
+          str = str + "<td>" + d + "</td>";
+          d++;
+        } else {
+          str = str + "<td>  </td>";
+        }
+      }
+      str = str + "</tr>";
+      const table = document.getElementById("table");
+      table.innerHTML = str;
+    }
+  </script>
 </html>
