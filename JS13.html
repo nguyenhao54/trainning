@@ -8,6 +8,82 @@
   </head>
   <body>
     Bài 13: tạo 1 quizapp gồm 10 câu hỏi trắc nghiệm, câu trả lời hiện kết quả
-    chung và hiện đáp án cho tất cả hỏi khi hoàn thành quiz
+    chung và hiện đáp án cho tất cả hỏi khi hoàn thành quiz.
+    <form>
+      <p>Câu 1:</p>
+      <input type="radio" name="q1" value="1" />
+      <label for="">A</label>
+      <input type="radio" name="q1" value="2" />
+      <label for="">B</label>
+      <input type="radio" name="q1" value="3" />
+      <label for="">C</label>
+      <input type="radio" name="q1" value="4" />
+      <label for="">D</label>
+      <div id="ans1"></div>
+      <p>Câu 2:</p>
+      <input type="radio" name="q2" value="1" />
+      <label for="">A</label>
+      <input type="radio" name="q2" value="2" />
+      <label for="">B</label>
+      <input type="radio" name="q2" value="3" />
+      <label for="">C</label>
+      <input type="radio" name="q2" value="4" />
+      <label for="">D</label>
+      <div id="ans1"></div>
+      <p>Câu 3:</p>
+      <input type="radio" name="q3" value="1" />
+      <label for="">A</label>
+      <input type="radio" name="q3" value="2" />
+      <label for="">B</label>
+      <input type="radio" name="q3" value="3" />
+      <label for="">C</label>
+      <input type="radio" name="q3" value="4" />
+      <label for="">D</label>
+      <div id="ans3"></div>
+      <p>Câu 4:</p>
+      <input type="radio" name="q4" value="1" />
+      <label for="">A</label>
+      <input type="radio" name="q4" value="2" />
+      <label for="">B</label>
+      <input type="radio" name="q4" value="3" />
+      <label for="">C</label>
+      <input type="radio" name="q4" value="4" />
+      <label for="">D</label>
+      <div id="ans4"></div>
+      <p>Câu 5:</p>
+      <input type="radio" name="q5" value="1" />
+      <label for="">A</label>
+      <input type="radio" name="q5" value="2" />
+      <label for="">B</label>
+      <input type="radio" name="q5" value="3" />
+      <label for="">C</label>
+      <input type="radio" name="q5" value="4" />
+      <label for="">D</label>
+      <div id="ans5"></div>
+      <button onclick="check()">Submit</button>
+      <button onclick="checkAns()">Submit</button>
+    </form>
+    <script>
+      answer = [1, 2, 3, 4, 3];
+      grade = 0;
+      function checkAns() {
+        for (let i = 0; i < answer.size(); i++) {
+          num = i + 1;
+          strName = "q" + num;
+          console.log(strName);
+
+          // var q = document.getElementsByName(strName).value;
+          // if (q == answer[i]) {
+          //   grade++;
+          // } else {
+          //   strans = "ans" + num;
+          //   console.log(strans);
+
+          // document.getElementById(strans).innerText = "Đáp án: " + answer[i];
+          // }
+        }
+      }
+      console.log(grade);
+    </script>
   </body>
 </html>

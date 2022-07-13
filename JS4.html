@@ -36,45 +36,44 @@
         "
       >
         <p
-          id="res"
+          id="output"
           style="
             font-size: 45px;
             font-family: 'Courier New', Courier, monospace;
             font-weight: 900;
             text-align: right;
+            height: 60px;
           "
-        >
-          0
-        </p>
+        ></p>
         <div class="num">
           <div>
-            <button id="C">C</button>
-            <button id="CE">CE</button>
-            <button id="%">%</button>
-            <button id=":">:</button>
+            <button id="C" class="operator">C</button>
+            <button id="CE" class="operator">CE</button>
+            <button id="%" class="num">%</button>
+            <button id="/" class="num">:</button>
           </div>
           <div>
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
-            <button id="x">x</button>
+            <button id="7" class="num">7</button>
+            <button id="8" class="num">8</button>
+            <button id="9" class="num">9</button>
+            <button id="*" class="num">x</button>
           </div>
           <div>
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="-">-</button>
+            <button id="4" class="num">4</button>
+            <button id="5" class="num">5</button>
+            <button id="6" class="num">6</button>
+            <button id="-" class="num">-</button>
           </div>
           <div>
-            <button id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="+">+</button>
+            <button id="1" class="num">1</button>
+            <button id="2" class="num">2</button>
+            <button id="3" class="num">3</button>
+            <button id="+" class="num">+</button>
           </div>
           <div>
-            <button id="0">0</button>
-            <button id=".">.</button>
-            <button id="=" style="width: 113px">=</button>
+            <button id="0" class="num">0</button>
+            <button id="." class="num">.</button>
+            <button id="=" class="operator" style="width: 113px">=</button>
           </div>
         </div>
         <div class="symb"></div>
@@ -83,5 +82,46 @@
   </body>
 
   <!-- JavaScript----------------------------------------------->
-  <script></script>
+  <script>
+    function getOutput() {
+      return document.getElementById("output").innerText;
+    }
+    function printOutput(num) {
+      document.getElementById("output").innerText = num;
+    }
+    var operators = document.getElementsByClassName("operator");
+    for (let i = 0; i < operators.length; i++) {
+      operators[i].addEventListener("click", function () {
+        //alert(this.id);
+        if (this.id == "CE") {
+          printOutput("");
+        } else if (this.id == "C") {
+          var output = getOutput();
+          output = output.substr(0, output.length - 1);
+          printOutput(output);
+        } else {
+          var output = getOutput();
+          if (output != "") {
+            if (this.id == "=") {
+              var res = eval(output);
+              printOutput(res);
+            }
+          }
+        }
+      });
+    }
+    // printOutput("12938");
+
+    var numbers = document.getElementsByClassName("num");
+    for (let i = 0; i < numbers.length; i++) {
+      numbers[i].addEventListener("click", function () {
+        // alert(this.id);
+        var output = getOutput();
+        if (output != NaN) {
+          output = output + this.id;
+          printOutput(output);
+        }
+      });
+    }
+  </script>
 </html>
