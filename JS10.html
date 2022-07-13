@@ -93,8 +93,16 @@
             checkWinner();
           });
         }
-        restartbtn.addEventListener("click", restart());
-        statusText.textContent = `${currentPlayer} turn`;
+        restartbtn.addEventListener("click", () => {
+          currentPlayer = "x";
+          options = ["", "", "", "", "", "", "", "", ""];
+          statusText.textContent = `${currentPlayer}'s turn`;
+          for (let i = 0; i < 9; i++) {
+            cells[i].textContent = "";
+          }
+          running = true;
+        });
+        statusText.textContent = `${currentPlayer}'s turn`;
         running = true;
       }
       function changeTurn() {
@@ -122,21 +130,13 @@
           changeTurn(); // change to winner
           statusText.textContent = `${currentPlayer} wins`;
           running = false;
-        } else if (!options.include("")) {
-          statusText.textContent = "draw";
+          // if all cell are filled
+        } else if (options.include("") == false) {
+          statusText.textContent = `draw!`;
           running = false;
         } else {
           changeTurn();
         }
-      }
-      function restart() {
-        currentPlayer = "x";
-        options = ["", "", "", "", "", "", "", "", ""];
-        statusText.textContent = `${currentPlayer}'s turn`;
-        for (let i = 0; i < 9; i++) {
-          cells[i].textContent = "";
-        }
-        running = true;
       }
     </script>
   </body>
