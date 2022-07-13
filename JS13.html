@@ -6,84 +6,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    body,
+    button {
+      font-family: monospace;
+      font-size: 15px;
+    }
+    button {
+      border: none;
+      background-color: rgb(65, 57, 96);
+      border-radius: 5px;
+      padding: 12px;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      color: antiquewhite;
+      cursor: pointer;
+      margin: 12px;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      background-color: rgb(36, 36, 74);
+    }
+    .ansContainer {
+      margin: auto;
+      border: 2px solid rgb(52, 37, 37);
+      width: 500px;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+    }
+    .hide {
+      display: none;
+    }
+    .container {
+      text-align: center;
+    }
+  </style>
   <body>
     Bài 13: tạo 1 quizapp gồm 10 câu hỏi trắc nghiệm, câu trả lời hiện kết quả
     chung và hiện đáp án cho tất cả hỏi khi hoàn thành quiz.
-    <form>
-      <p>Câu 1:</p>
-      <input type="radio" name="q1" value="1" />
-      <label for="">A</label>
-      <input type="radio" name="q1" value="2" />
-      <label for="">B</label>
-      <input type="radio" name="q1" value="3" />
-      <label for="">C</label>
-      <input type="radio" name="q1" value="4" />
-      <label for="">D</label>
-      <div id="ans1"></div>
-      <p>Câu 2:</p>
-      <input type="radio" name="q2" value="1" />
-      <label for="">A</label>
-      <input type="radio" name="q2" value="2" />
-      <label for="">B</label>
-      <input type="radio" name="q2" value="3" />
-      <label for="">C</label>
-      <input type="radio" name="q2" value="4" />
-      <label for="">D</label>
-      <div id="ans1"></div>
-      <p>Câu 3:</p>
-      <input type="radio" name="q3" value="1" />
-      <label for="">A</label>
-      <input type="radio" name="q3" value="2" />
-      <label for="">B</label>
-      <input type="radio" name="q3" value="3" />
-      <label for="">C</label>
-      <input type="radio" name="q3" value="4" />
-      <label for="">D</label>
-      <div id="ans3"></div>
-      <p>Câu 4:</p>
-      <input type="radio" name="q4" value="1" />
-      <label for="">A</label>
-      <input type="radio" name="q4" value="2" />
-      <label for="">B</label>
-      <input type="radio" name="q4" value="3" />
-      <label for="">C</label>
-      <input type="radio" name="q4" value="4" />
-      <label for="">D</label>
-      <div id="ans4"></div>
-      <p>Câu 5:</p>
-      <input type="radio" name="q5" value="1" />
-      <label for="">A</label>
-      <input type="radio" name="q5" value="2" />
-      <label for="">B</label>
-      <input type="radio" name="q5" value="3" />
-      <label for="">C</label>
-      <input type="radio" name="q5" value="4" />
-      <label for="">D</label>
-      <div id="ans5"></div>
-      <button onclick="check()">Submit</button>
-      <button onclick="checkAns()">Submit</button>
-    </form>
+
+    <div class="container">
+      <h1 id="score">Score:</h1>
+      <div id="question-container">
+        <h1 id="question" class="hide"></h1>
+      </div>
+      <div class="ansContainer hide">
+        <button class="btn ans">A</button>
+        <button class="btn ans">B</button>
+        <button class="btn ans">C</button>
+        <button class="btn ans">D</button>
+      </div>
+      <div class="action">
+        <button id="start" class="btn">Start</button>
+        <button id="next-btn" class="btn hide">Next</button>
+      </div>
+    </div>
+
     <script>
-      answer = [1, 2, 3, 4, 3];
-      grade = 0;
-      function checkAns() {
-        for (let i = 0; i < answer.size(); i++) {
-          num = i + 1;
-          strName = "q" + num;
-          console.log(strName);
+      const questions = [
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "2+1=?",
+          answers: [
+            {
+              text: "3",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "2+3=?",
+          answers: [
+            {
+              text: "2",
+              correct: false,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: true,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "7+1=?",
+          answers: [
+            {
+              text: "8",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "4+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: false,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: true,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "9+1=?",
+          answers: [
+            {
+              text: "10",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+        {
+          question: "1+1=?",
+          answers: [
+            {
+              text: "2",
+              correct: true,
+            },
+            {
+              text: "1",
+              correct: false,
+            },
+            {
+              text: "5",
+              correct: false,
+            },
+            {
+              text: "6",
+              correct: false,
+            },
+          ],
+        },
+      ];
+      const startbtn = document.getElementById("start");
+      const questionshow = document.getElementById("question");
+      const nextbtn = document.getElementById("next-btn");
+      const ans = document.getElementsByClassName("ans");
+      const ansContainer = document.querySelector(".ansContainer");
+      var score = document.getElementById("score");
+      let count = 0;
+      var currentQuestion = 0;
+      startbtn.addEventListener("click", startTest);
+      nextbtn.addEventListener("click", nextQuestion);
+      for (let i = 0; i < 4; i++) {
+        ans[i].addEventListener("click", () => {
+          console.log(i, questions[currentQuestion - 1].answers[i].text);
+          if (questions[currentQuestion - 1].answers[i].correct) {
+            count++;
+            // console.log(count);
+            score.textContent = "Score: " + count;
+          }
+          nextQuestion();
+        });
+      }
+      function startTest() {
+        //alert("started");
 
-          // var q = document.getElementsByName(strName).value;
-          // if (q == answer[i]) {
-          //   grade++;
-          // } else {
-          //   strans = "ans" + num;
-          //   console.log(strans);
+        startbtn.classList.add("hide");
+        questionshow.classList.remove("hide");
+        nextbtn.classList.remove("hide");
+        ansContainer.classList.remove("hide");
 
-          // document.getElementById(strans).innerText = "Đáp án: " + answer[i];
-          // }
+        nextQuestion();
+      }
+      function nextQuestion() {
+        if (currentQuestion == 10) {
+          questionshow.innerText = "Completed! ";
+          ansContainer.classList.add("hide");
+          nextbtn.classList.add("hide");
+        } else {
+          questionshow.innerText = questions[currentQuestion].question;
+          for (let i = 0; i < 4; i++) {
+            ans[i].innerText = questions[currentQuestion].answers[i].text;
+          }
+          currentQuestion++;
         }
       }
-      console.log(grade);
     </script>
   </body>
 </html>
