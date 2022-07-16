@@ -20,5 +20,141 @@
     theo mã sinh viên tăng dần, ví dụ với 2 dữ liệu mẫu trên thì đầu ra hiển thị
     sẽ là: - Tổng số sinh viên và danh sách sinh viên có ở Input 2 mà ko có ở
     Input 1: 2 - Chi tiết: SV005, Cần thơ SV009, Đà nẵng
+
+    <div class="container">
+      <div>
+        <input type="text" id="input1" />
+        <input type="text" name="" id="input2" />
+        <button onclick="check()">Check</button>
+        <div id="list"></div>
+        <div id="ouput"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function check() {
+      let studentList;
+      let detailList;
+
+      const input1 = document.getElementById("input1");
+      let students = input1.value.split(";");
+      students.forEach((student) => {
+        studentList[0].msv = student.split(",")[0];
+        studentList[0].name = student.split(",")[1];
+      });
+      console.log(students);
+      const input2 = document.getElementById("input2");
+      let details = input2.value.split(";");
+      console.log(details);
+      details.forEach((dt) => {
+        detailList[0].msv = dt.split(",");
+      });
+
+      const list = document.getElementById("list");
+      const ouput = document.getElementById("output");
+    }
+  </script>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Assignment</title>
+  </head>
+  <body>
+    Bài 11. Có 2 dữ liệu đầu vào: - Input 1: chứa dữ liệu mã sinh viên, tên sinh
+    viên (cách nhau bằng dấu phẩy), 2 sinh viên cách nhau bằng dấu chấm phẩy, ví
+    dụ: "SV001, Nguyễn Văn A; SV003, Phạm Văn C; SV006, Nguyễn Văn D" - Input 2:
+    chứa dữ liệu mã sinh viên, Tỉnh/TP của sinh viên (cách nhau bằng dấu phẩy),
+    2 sinh viên cách nhau bằng dấu chấm phẩy, ví dụ: "SV001,Hà Nội; SV009, Đà
+    nẵng; SV003, Thái Bình; SV005, Cần thơ" Yêu cầu: 1. So khớp 2 dữ liệu đầu
+    vào để hiển thị dữ liệu theo các dòng, có đầy đủ mã sinh viên, họ tên và
+    Tỉnh/TP, ví dụ với 2 dữ liệu mẫu trên thì đầu ra hiển thị sẽ là: SV001,
+    Nguyễn Văn A, Hà Nội SV003, Phạm Văn C, Thái Bình 2. Hiển thị tổng số sinh
+    viên và danh sách sinh viên có ở Input 2 mà ko có ở Input 1 và có sắp xếp
+    theo mã sinh viên tăng dần, ví dụ với 2 dữ liệu mẫu trên thì đầu ra hiển thị
+    sẽ là: - Tổng số sinh viên và danh sách sinh viên có ở Input 2 mà ko có ở
+    Input 1: 2 - Chi tiết: SV005, Cần thơ SV009, Đà nẵng
+    <div class="container">
+      <form>
+        <div style="margin-bottom: 10px">
+          <label for="input1">Input 1</label>
+          <input id="input1" type="text" />
+        </div>
+        <div style="margin-bottom: 10px">
+          <label for="input2">Input 2</label>
+          <input id="input2" type="text" />
+        </div>
+        <button style="margin-bottom: 10px" id="submitBtn" type="submit">
+          Submit
+        </button>
+      </form>
+      <span style="white-space: pre-line" id="result"></span>
+      <p id="result2"></p>
+      <span style="white-space: pre-line" id="detail"></span>
+    </div>
+    <script>
+      const submitBtn = document.getElementById("submitBtn");
+      const input1 = document.getElementById("input1");
+      const input2 = document.getElementById("input2");
+      const resultDisplay = document.getElementById("result");
+      const resultDisplay2 = document.getElementById("result2");
+      const container = document.querySelector(".container");
+      const detail = document.getElementById("detail");
+
+      submitBtn.addEventListener("click", handleSubmit);
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        const input1Data = input1.value.split("; ");
+        const input2Data = input2.value.split("; ");
+        const input1Students = input1Data.map((el) => {
+          const splitedData = el.split(", ");
+          return { code: splitedData[0], name: splitedData[1] };
+        });
+        const matchedStudents = [];
+        const notMatchedStudents = [];
+        const input2Students = input2Data.forEach((el) => {
+          const splitedData = el.split(", ");
+          const code = splitedData[0];
+          const address = splitedData[1];
+          const student = input1Students.find((s) => s.code === code);
+          if (student) {
+            matchedStudents.push({ code, name: student.name, address });
+          } else {
+            notMatchedStudents.push({ code, address });
+          }
+        });
+
+        if (
+          matchedStudents.length === 0 ||
+          input1.value === "" ||
+          input2.value === ""
+        ) {
+          resultDisplay.textContent = "No matched student found!";
+        } else {
+          const displayText = matchedStudents.reduce(
+            (prev, cur) => `${prev}${cur.code}, ${cur.name}, ${cur.address}\n`,
+            ""
+          );
+          resultDisplay.innerText = displayText;
+        }
+
+        notMatchedStudents.sort((a, b) => a.code.localeCompare(b.code));
+        resultDisplay2.textContent = `Tổng số sinh viên và danh sách sinh viên có ở Input 2 mà ko có ở Input 1: ${notMatchedStudents.length}`;
+        if (notMatchedStudents.length !== 0) {
+          const displayText = notMatchedStudents.reduce(
+            (prev, cur) => `${prev}${cur.code}, ${cur.address}\n`,
+            ""
+          );
+          detail.innerText = displayText;
+        } else {
+          detail.innerText = "";
+        }
+      }
+    </script>
   </body>
 </html>
