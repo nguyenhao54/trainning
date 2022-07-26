@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./TSHW.js"></script>
+  </head>
+  <body>
+    <!-- bai 24--------------------------------------------------- -->
+    <div id="bai1">
+      <p style="color: red">
+        Bài 1: Viết chương trình cho người dùng nhập vào số n lớn hơn 0, sau đó
+        dựa vào n tính giá trị của biểu thức: expres = 1/n + 2/n + 3/n + ... +
+        n/n.
+      </p>
+      <input type="number" id="inputn" />
+      <button onclick="calEx()">Calculate</button>
+      <p id="ex"></p>
+    </div>
+    <div id="bai2">
+      Bài 11. Có 2 dữ liệu đầu vào: - Input 1: chứa dữ liệu mã sinh viên, tên
+      sinh viên (cách nhau bằng dấu phẩy), 2 sinh viên cách nhau bằng dấu chấm
+      phẩy, ví dụ: "SV001, Nguyễn Văn A; SV003, Phạm Văn C; SV006, Nguyễn Văn D"
+      - Input 2: chứa dữ liệu mã sinh viên, Tỉnh/TP của sinh viên (cách nhau
+      bằng dấu phẩy), 2 sinh viên cách nhau bằng dấu chấm phẩy, ví dụ: "SV001,Hà
+      Nội; SV009, Đà nẵng; SV003, Thái Bình; SV005, Cần thơ" Yêu cầu: 1. So khớp
+      2 dữ liệu đầu vào để hiển thị dữ liệu theo các dòng, có đầy đủ mã sinh
+      viên, họ tên và Tỉnh/TP, ví dụ với 2 dữ liệu mẫu trên thì đầu ra hiển thị
+      sẽ là: SV001, Nguyễn Văn A, Hà Nội SV003, Phạm Văn C, Thái Bình 2. Hiển
+      thị tổng số sinh viên và danh sách sinh viên có ở Input 2 mà ko có ở Input
+      1 và có sắp xếp theo mã sinh viên tăng dần, ví dụ với 2 dữ liệu mẫu trên
+      thì đầu ra hiển thị sẽ là: - Tổng số sinh viên và danh sách sinh viên có ở
+      Input 2 mà ko có ở Input 1: 2 - Chi tiết: SV005, Cần thơ SV009, Đà nẵng
+      <div class="container">
+        <form>
+          <div style="margin-bottom: 10px">
+            <label for="input1">Input 1</label>
+            <input id="input1" type="text" />
+          </div>
+          <div style="margin-bottom: 10px">
+            <label for="input2">Input 2</label>
+            <input id="input2" type="text" />
+          </div>
+          <button style="margin-bottom: 10px" onclick="handleEvent(event)">
+            check
+          </button>
+        </form>
+        <span style="white-space: pre-line" id="result"></span>
+        <p id="result2"></p>
+        <span style="white-space: pre-line" id="detail"></span>
+      </div>
+    </div>
+
+    <div id="bai3">
+      Bài 3: Viết một chương trình JavaScript chấp nhận một số làm đầu vào và
+      chèn dấu gạch ngang (-) vào giữa hai số chẵn. Ví dụ: 025468, đầu ra phải
+      là 0-254-6-8.
+      <div>
+        <input type="number" id="number" placeholder="Enter string number" />
+        <button onclick="convert()">Convert</button>
+        <div id="output"></div>
+      </div>
+    </div>
+  </body>
+</html>
